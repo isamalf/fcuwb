@@ -93,7 +93,7 @@
             margin: 0 auto;
         }
 
-        /* Simplified Preloader */
+        /* Improved Preloader with longer duration */
         .preloader {
             position: fixed;
             top: 0;
@@ -105,7 +105,7 @@
             align-items: center;
             justify-content: center;
             z-index: 9999;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
         }
 
         .preloader-content {
@@ -125,7 +125,7 @@
             margin: 0 auto;
             letter-spacing: 1px;
             animation: 
-                typing 2s steps(25, end),
+                typing 2.5s steps(25, end),
                 blink-caret 0.75s step-end infinite;
         }
 
@@ -151,7 +151,7 @@
             height: 100%;
             width: 0%;
             background: #4B2E83;
-            transition: width 1s ease;
+            transition: width 2s ease;
         }
 
         /* Navigation */
@@ -244,7 +244,7 @@
             transition: 0.3s;
         }
 
-        /* Hero Section - Improved for mobile */
+        /* Hero Section - Improved for mobile with better spacing */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -253,13 +253,17 @@
             overflow: hidden;
             background: #f9f9f9;
             text-align: center;
-            padding: 80px 0;
+            padding: 100px 0 60px;
         }
 
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
             padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 70vh;
         }
 
         .hero-title {
@@ -311,6 +315,7 @@
             text-align: center;
             max-width: 200px;
             flex: 1 1 200px;
+            margin-bottom: 20px;
         }
 
         .hero-feature-icon {
@@ -512,7 +517,7 @@
             background: rgba(75, 46, 131, 0.1);
         }
 
-        /* Contact Section */
+        /* Contact Section - Fixed social links alignment */
         .contact {
             padding: 80px 0;
             background: #fff;
@@ -566,6 +571,8 @@
         .social-links {
             display: flex;
             gap: 12px;
+            justify-content: flex-start;
+            flex-wrap: wrap;
         }
 
         .social-links a {
@@ -736,8 +743,12 @@
             }
             
             .hero {
-                min-height: 90vh;
-                padding: 100px 0 60px;
+                min-height: 100vh;
+                padding: 120px 0 80px;
+            }
+            
+            .hero-content {
+                min-height: 75vh;
             }
             
             .hero-title {
@@ -789,12 +800,20 @@
             section {
                 padding: 50px 0;
             }
+            
+            .social-links {
+                justify-content: center;
+            }
         }
 
         @media (max-width: 576px) {
             .hero {
-                min-height: 85vh;
-                padding: 120px 0 60px;
+                min-height: 100vh;
+                padding: 130px 0 80px;
+            }
+            
+            .hero-content {
+                min-height: 80vh;
             }
             
             .hero-title {
@@ -836,6 +855,14 @@
             .logo-text {
                 font-size: 1.5rem;
             }
+            
+            .hero-features {
+                margin-bottom: 40px;
+            }
+            
+            .hero-scroll {
+                bottom: 20px;
+            }
         }
 
         /* High contrast mode support */
@@ -872,7 +899,7 @@
     <!-- Skip link for accessibility -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- Updated Preloader with typing effect -->
+    <!-- Updated Preloader with longer typing effect -->
     <div class="preloader">
         <div class="preloader-content">
             <div class="loader-logo">
@@ -907,7 +934,7 @@
         </div>
     </nav>
 
-    <!-- Hero Section with improved mobile sizing -->
+    <!-- Hero Section with improved mobile sizing and spacing -->
     <section class="hero" id="home">
         <div class="hero-content" id="main-content">
             <h1 class="hero-title">UW Bothell Finance Club</h1>
@@ -1101,7 +1128,7 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact Section with fixed social links -->
     <section class="contact" id="contact">
         <div class="container">
             <div class="section-header">
@@ -1190,27 +1217,27 @@
     </footer>
 
     <script>
-        // Faster Preloader
+        // Slower Preloader to see typing effect
         window.addEventListener('load', function() {
             const preloader = document.querySelector('.preloader');
             const progressBar = document.querySelector('.progress-bar');
             
-            // Faster loading animation
+            // Slower loading animation to match typing duration
             let progress = 0;
             const interval = setInterval(() => {
-                progress += 2;
+                progress += 1;
                 if (progress >= 100) {
                     progress = 100;
                     clearInterval(interval);
                     
-                    // Quickly hide preloader after completion
+                    // Wait for typing animation to complete before hiding
                     setTimeout(() => {
                         preloader.style.opacity = '0';
                         preloader.style.visibility = 'hidden';
-                    }, 200);
+                    }, 500);
                 }
                 progressBar.style.width = `${progress}%`;
-            }, 10);
+            }, 30); // Slower interval for longer loading
         });
 
         // Navbar scroll effect
